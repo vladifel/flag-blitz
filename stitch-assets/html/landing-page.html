@@ -1,0 +1,325 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Flag Blitz - The Ultimate Challenge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#00132d",
+                        "on-tertiary-container": "#002f31",
+                        "tertiary": "#9ecfd1",
+                        "secondary-container": "#f47d00",
+                        "secondary": "#ffb784",
+                        "inverse-on-surface": "#183153",
+                        "on-surface-variant": "#e4bebc",
+                        "on-tertiary": "#003739",
+                        "primary": "#ffb3b1",
+                        "inverse-primary": "#bb152c",
+                        "on-tertiary-fixed": "#002021",
+                        "on-background": "#d5e3ff",
+                        "outline": "#ab8987",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb3b1",
+                        "on-surface": "#d5e3ff",
+                        "on-secondary-container": "#572900",
+                        "surface-dim": "#00132d",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#112a4c",
+                        "background": "#00132d",
+                        "surface-container-highest": "#1d3557",
+                        "on-tertiary-fixed-variant": "#1a4e50",
+                        "surface-container-low": "#001b3c",
+                        "on-primary": "#680011",
+                        "surface-bright": "#223a5c",
+                        "outline-variant": "#5b403f",
+                        "tertiary-fixed-dim": "#9ecfd1",
+                        "surface-variant": "#1d3557",
+                        "secondary-fixed": "#ffdcc6",
+                        "on-primary-container": "#5b000e",
+                        "inverse-surface": "#d5e3ff",
+                        "secondary-fixed-dim": "#ffb784",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#68999b",
+                        "primary-fixed": "#ffdad8",
+                        "surface-container-lowest": "#000e24",
+                        "surface-container": "#032041",
+                        "on-primary-fixed": "#410007",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#b9ecee",
+                        "primary-container": "#ff535b",
+                        "on-secondary": "#502500",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "on-secondary-fixed-variant": "#713700",
+                        "on-secondary-fixed": "#301400",
+                        "on-primary-fixed-variant": "#92001c",
+                        "racing-red": "#e63946",
+                        "vibrant-orange": "#f77f00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "gutter": "16px",
+                        "xl": "64px",
+                        "md": "24px",
+                        "margin-desktop": "32px",
+                        "lg": "40px",
+                        "sm": "12px",
+                        "xs": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Montserrat"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "display-hero": ["Montserrat"],
+                        "label-bold": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "display-hero": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+                        "label-bold": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.4)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 25px rgba(230, 57, 70, 0.8)); transform: scale(1.05); }
+        }
+        .pulse-glow { animation: pulse-glow 3s infinite ease-in-out; }
+        
+        .game-button {
+            background: linear-gradient(45deg, #e63946, #f77f00);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 0 rgba(230, 57, 70, 0);
+        }
+        .game-button:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
+            transform: translateY(-2px);
+        }
+        .game-button:active {
+            transform: scale(0.95);
+        }
+
+        .flag-bg {
+            background-image: linear-gradient(rgba(0, 19, 45, 0.7), rgba(0, 19, 45, 0.7)), url('https://lh3.googleusercontent.com/aida/AP1WRLsoBOXwMr_fw6udd3sK7Tp2HS0vCevWZKZbqxnOfnHjWQBUD8_lDieEjP_dmeVse9Bufhe7VDQDiUjx4Yv-RJwkdcXTL2eZpUVNPSs3gUDqqK2qmIMhlyrwmbh1Y-XNIvnvn022kxRhw25hjB6qeDh9gbIoyrAHR9K1aiQmHU3op-tuJm6BkdH4bLD4QOaTtR5OXvvW1xJYpGB7yycEoAZRMo-xc2yrOBYwrkAUP0soapNXj-cM8tnYNhc');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .content-shell {
+            max-width: 880px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- Background Layer -->
+<div class="fixed inset-0 z-0 flag-bg"></div>
+<!-- STITCH_SHADER_START:ANIMATION_100 class="fixed inset-0 z-10 opacity-30 pointer-events-none" -->
+<div class="fixed inset-0 z-10 opacity-30 pointer-events-none" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_100" style="display:block;width:100%;height:100%" width="1280" height="1048"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_100');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create a dynamic, flowing energy field using sine waves and time
+    float noise = sin(uv.x * 10.0 + u_time * 2.0) * cos(uv.y * 10.0 - u_time * 1.5);
+    noise += sin(uv.x * 20.0 - u_time * 3.0) * 0.5;
+    
+    // Colors inspired by Flag Blitz: Racing Red (#E63946) and Deep Navy (#00132D)
+    vec3 color1 = vec3(0.902, 0.224, 0.275); // Racing Red
+    vec3 color2 = vec3(0.0, 0.075, 0.176);  // Deep Navy
+    vec3 color3 = vec3(1.0, 0.498, 0.0);    // Vibrant Orange accent
+    
+    vec3 finalColor = mix(color2, color1, noise * 0.5 + 0.5);
+    finalColor = mix(finalColor, color3, pow(noise, 5.0) * 0.2);
+    
+    // Add a subtle vignette and glow
+    float dist = length(uv - 0.5);
+    finalColor *= (1.0 - dist * 0.5);
+    finalColor += color3 * (1.0 - dist) * 0.15;
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_100 -->
+<div class="content-shell z-20">
+<!-- TopNavBar Component -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-base max-w-[880px] mx-auto left-0 right-0 bg-background/80 backdrop-blur-md">
+<div class="flex items-center gap-base">
+<img alt="Flag Blitz" class="h-8 md:h-10 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLvES-EkBzJZv_1W7MA64DFD_j3tKbXnvFVU1HZasHSDMzGQXS0USmn__Xr2wCHoFqkNuVj4kjg81lEG4RlL4G1gVSBPVNJ2ud7TCOcOzFLiIP-y0b5wVpzg8lnjNPF32_i-BaLhhSRPyyWPEkv0IdEF6PApdW1ageDfUITDvluJG6-boofHOFEZ0k62pN9BSNcThqAaTYNeeYN-L6UaT9F9YkFKRIII4vwlYjWtW4BmHvVHKhpgBJKhdGA">
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-label-bold font-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">MODES</a>
+<a class="text-label-bold font-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">LEADERBOARD</a>
+<a class="text-label-bold font-label-bold text-primary border-b-2 border-primary pb-1" href="#">PLAY</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:brightness-110 transition-all duration-200" data-icon="leaderboard">leaderboard</button>
+<button class="material-symbols-outlined text-primary hover:brightness-110 transition-all duration-200" data-icon="settings">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional gamer profile avatar with a futuristic neon headset, in the style of high-octane competitive gaming, featuring red and orange accents against a deep blue background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU_-cXUcx66Q_w-3h7jMtFdlgaE3PxCB7pU_39IMTjTBBSxtVxpe8ZXlvJUY7Qzz9KGaPGSxa_BNMm8Je2FB70kl2WDF9r2rzbgWsgvJuHaS9TMFCCvUO9QjcX8W_ZkLF5V4KytksPbmf9_iO5jtHqLedhpsy1n5g5VajoyRaEeRrlRQfZAdl2S8UKO_OrRwze0tOGng7km_WdldCjDOytq21Z5HM173TMOWVJLQYelLBsA89A2xOw">
+</div>
+</div>
+</header>
+<!-- Main Hero Section -->
+<main class="flex-grow flex flex-col items-center justify-center text-center px-gutter pt-xl"><div class="mb-lg relative">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+<img alt="Flag Icon" class="w-32 h-32 md:w-48 md:h-48 relative z-10 pulse-glow" src="https://lh3.googleusercontent.com/aida/AP1WRLv00C5EMD2PyILSPdpO9IJ5PhyfpK0sOu8opI3p7Zdu6rm2wXBIXZqAzk4hfTYX9IW5dxGxnsaUqK2VLkm4DOaTzToxP7WU7AmCkJm_alM7x7Wc8uE2SoJ1AuwqpbJc_P1t-mMf145vq4ydkcSJert6s0bfhU1UInMGjvcL3FjtEeaiPNbvKWSK7EadxNhom5Z9tOUMVe49_u8cg_b0Abf4KqUznQEvUN1F03txkt2zCjnZWwL50tDADq0">
+</div>
+<h1 class="font-display-hero text-display-hero italic uppercase tracking-tighter mb-md text-white">
+                THE ULTIMATE <span class="text-transparent bg-clip-text bg-gradient-to-r from-racing-red to-vibrant-orange">FLAG CHALLENGE</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-lg">
+                Push your reflexes to the limit in the world's fastest flag identification circuit. Compete globally, master modes, and claim your spot on the pro-circuit.
+            </p>
+<div class="flex flex-col gap-md w-full max-w-xs">
+<button class="game-button py-md px-xl rounded-lg font-headline-md text-headline-md text-white uppercase tracking-widest flex items-center justify-center gap-sm">
+                    START PLAYING
+                    <span class="material-symbols-outlined" data-icon="play_arrow" style="font-size: 4rem; line-height: 4rem;">play_arrow</span>
+</button>
+</div></main>
+<!-- BottomNavBar Component (Mobile Only) -->
+<footer class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 max-w-[880px] mx-auto left-0 right-0 bg-surface-container rounded-t-xl shadow-lg">
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-2 scale-90">
+<span class="material-symbols-outlined" data-icon="sports_esports">sports_esports</span>
+<span class="font-label-sm text-label-sm">Play</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-sm text-label-sm">Modes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-label-sm text-label-sm">Ranks</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-label-sm text-label-sm">Shop</span>
+</button>
+</footer>
+</div>
+<script>
+        // Simple hover effect for bento cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                icon.style.transform = 'scale(1.2) rotate(5deg)';
+                icon.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+
+
+
+</body></html>

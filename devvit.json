@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "flag-blitz",
+  "permissions": {
+    "redis": true,
+    "http": {
+      "enable": true,
+      "domains": ["flagcdn.com"]
+    }
+  },
+  "dev": {
+    "subreddit": "flag_blitz_dev"
+  },
+  "post": {
+    "dir": "dist/client",
+    "entrypoints": {
+      "default": {
+        "entry": "game.html",
+        "height": "tall",
+        "inline": true
+      },
+      "game": {
+        "entry": "game.html",
+        "height": "tall",
+        "inline": true
+      }
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Create Flag Blitz Post",
+        "description": "Flag Blitz — Guess the Flag!",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/post-create"
+      }
+    ]
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "node scripts/download-flags.mjs && node scripts/verify-flags.mjs && vite build"
+  }
+}

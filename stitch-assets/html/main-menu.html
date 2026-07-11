@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flag Blitz - Main Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#9ecfd1",
+                      "primary-fixed-dim": "#ffb3b1",
+                      "surface-container-lowest": "#000e24",
+                      "on-primary-container": "#5b000e",
+                      "primary": "#ffb3b1",
+                      "background": "#00132d",
+                      "on-tertiary-fixed-variant": "#1a4e50",
+                      "on-secondary-fixed-variant": "#713700",
+                      "tertiary-container": "#68999b",
+                      "on-tertiary-container": "#002f31",
+                      "secondary-container": "#f47d00",
+                      "on-secondary": "#502500",
+                      "outline": "#ab8987",
+                      "on-primary": "#680011",
+                      "surface-container-highest": "#1d3557",
+                      "on-error": "#690005",
+                      "primary-container": "#ff535b",
+                      "on-surface-variant": "#e4bebc",
+                      "inverse-surface": "#d5e3ff",
+                      "surface-container": "#032041",
+                      "on-secondary-fixed": "#301400",
+                      "on-primary-fixed": "#410007",
+                      "surface-dim": "#00132d",
+                      "inverse-on-surface": "#183153",
+                      "on-tertiary": "#003739",
+                      "secondary-fixed-dim": "#ffb784",
+                      "on-surface": "#d5e3ff",
+                      "surface-container-low": "#001b3c",
+                      "surface-bright": "#223a5c",
+                      "outline-variant": "#5b403f",
+                      "surface-variant": "#1d3557",
+                      "on-background": "#d5e3ff",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed": "#002021",
+                      "primary-fixed": "#ffdad8",
+                      "secondary-fixed": "#ffdcc6",
+                      "surface": "#00132d",
+                      "tertiary-fixed": "#b9ecee",
+                      "inverse-primary": "#bb152c",
+                      "tertiary-fixed-dim": "#9ecfd1",
+                      "error": "#ffb4ab",
+                      "on-primary-fixed-variant": "#92001c",
+                      "secondary": "#ffb784",
+                      "on-secondary-container": "#572900",
+                      "surface-tint": "#ffb3b1",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-high": "#112a4c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "gutter": "16px",
+                      "xl": "64px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "lg": "40px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "headline-lg-mobile": ["Montserrat"],
+                      "display-hero": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Montserrat"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-bold": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "display-hero": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "900"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #00132d;
+            color: #d5e3ff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .racing-gradient {
+            background: linear-gradient(45deg, #ff535b 0%, #f47d00 100%);
+        }
+
+        .card-glow {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 83, 91, 0.25);
+            transform: translateY(-8px);
+            border-color: rgba(255, 179, 177, 0.5);
+        }
+
+        .inner-stroke {
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-motion {
+            background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLummOGjtjrR7PllQacMyZ7CTkp6iSaDIoPmlq-lRzF5kSG78VUsQ1S4KwMRqrV-56ZH8sTWOVjTX5Te-PglpWZCmvtPmwOE7Svl-GC-DgKepzvAnmJVHiPpgMX04AFpTNpSrIU8veh1ZOha2GO1RktkOV__7c-XGRNS4P84BofbvwxysO5v9-z4yMDrGOkCHtCgNfieTwXUnwHYPAtETxl7tQCiVf0SXn_wVnAq2A9VCO3SWd2WsXR12o0');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            mix-blend-mode: overlay;
+        }
+
+        .mode-card-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.95; transform: scale(1.02); }
+        }
+
+        .hero-logo-animate {
+            animation: pulse-soft 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="dark selection:bg-primary-container selection:text-on-primary-container">
+<!-- Background Layer -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-background"></div>
+<div class="absolute inset-0 bg-motion"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background"></div>
+</div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-base max-w-[880px] mx-auto left-0 right-0 bg-background/60 backdrop-blur-xl">
+<div class="flex items-center gap-sm">
+<span class="text-headline-md font-headline-lg italic tracking-tighter text-primary">FB</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs font-label-bold text-label-sm">
+<span class="material-symbols-outlined text-[20px]">leaderboard</span>
+                RANKING
+            </button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs font-label-bold text-label-sm">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                PREFS
+            </button>
+<div class="w-9 h-9 rounded-full border-2 border-primary overflow-hidden hover:scale-105 transition-transform cursor-pointer">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjpzD1iXviiJyLmF_Xc-GhIcSuCqfoU2DOdT5O-Hpj79dTTSYI8LVWvHeBuydpiOpN29Szf3fJ4C0pXK5S1QkP3YeyvTjmqtCa3vtJQxiBut47s982m4piWH7ZEYQl_Lie0MvuRYxvjqxaGVY_-xFSirgSlY4N-_EXUUesfq8aTEWm4Hn4qOj_U7Skk87k9EscU6nF2jhKnt_VTJtvZWa8ecTQY3ahVZL6KbplLoPS_jv7gsJ4SxaB"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="relative z-10 pt-32 pb-40 px-margin-mobile md:px-0 max-w-[880px] mx-auto">
+<!-- Hero Branding -->
+<section class="text-center mb-xl">
+<img alt="Flag Blitz Logo" class="w-full max-w-lg mx-auto mb-md hero-logo-animate" src="https://lh3.googleusercontent.com/aida/AP1WRLuKV-IYCqRyiRHv14TD2EWQN0ovLhGoeb014sCKgJyWVS216gUZmN-Bl_6GL2AuLQz7_T07w69C1rNtvPNKLW2N8Ou5voZf6QsmYKNumVFmU1vpiOTAHgRSAhvTjdfVkCjjRcy0qA5XoCs5N-9tv8NyiUt4pIUeALd-qGthqqTeXbTgBK6jf0rauwxADgx2oDKVOjd8fY7jSvnf1ZTGfpZGweyqUncJjAMmsBA4J-9wtXICNoZFk8jOaiE"/>
+</section>
+<!-- Game Mode Selection Grid -->
+<div class="mb-md flex items-center justify-between">
+<h2 class="text-headline-md font-headline-md text-on-surface uppercase tracking-tight">Select Game Mode</h2>
+<div class="h-px flex-1 bg-gradient-to-r from-outline-variant/50 to-transparent ml-md"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Quick Mode -->
+<div class="bg-surface-container group relative overflow-hidden rounded-xl border border-outline-variant/20 inner-stroke card-glow cursor-pointer p-md mode-card-pattern flex flex-col justify-between h-[240px]">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<h3 class="text-headline-md font-headline-md text-primary">Quick</h3>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors text-3xl">timer</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[80%]">A fast-paced sprint to test your basic knowledge. 25 Flags.</p>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-label-bold font-label-bold text-secondary">EST. 2 MIN</div>
+<button class="racing-gradient px-lg py-sm rounded-md text-on-primary-container font-label-bold text-label-bold scale-100 group-hover:brightness-110 transition-all">PLAY</button>
+</div>
+</div>
+<!-- Standard Mode -->
+<div class="bg-surface-container group relative overflow-hidden rounded-xl border border-outline-variant/20 inner-stroke card-glow cursor-pointer p-md mode-card-pattern flex flex-col justify-between h-[240px]">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<h3 class="text-headline-md font-headline-md text-primary">Standard</h3>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors text-3xl">flag</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[80%]">The classic competitive format for the everyday pro. 50 Flags.</p>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-label-bold font-label-bold text-secondary">EST. 5 MIN</div>
+<button class="racing-gradient px-lg py-sm rounded-md text-on-primary-container font-label-bold text-label-bold scale-100 group-hover:brightness-110 transition-all">PLAY</button>
+</div>
+</div>
+<!-- Pro Mode -->
+<div class="bg-surface-container group relative overflow-hidden rounded-xl border border-outline-variant/20 inner-stroke card-glow cursor-pointer p-md mode-card-pattern flex flex-col justify-between h-[240px]">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<h3 class="text-headline-md font-headline-md text-primary">Pro</h3>
+<span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors text-3xl">military_tech</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[80%]">Serious challenge for the flag encyclopedias. 100 Flags.</p>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-label-bold font-label-bold text-secondary">EST. 10 MIN</div>
+<button class="racing-gradient px-lg py-sm rounded-md text-on-primary-container font-label-bold text-label-bold scale-100 group-hover:brightness-110 transition-all">PLAY</button>
+</div>
+</div>
+<!-- Marathon Mode -->
+<div class="bg-surface-container group relative overflow-hidden rounded-xl border border-outline-variant/20 inner-stroke card-glow cursor-pointer p-md mode-card-pattern flex flex-col justify-between h-[240px]">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-xs">
+<h3 class="text-headline-md font-headline-md text-secondary">Marathon</h3>
+<span class="bg-error-container text-on-error-container text-[10px] px-2 py-0.5 rounded-full font-bold">HARDCORE</span>
+</div>
+<span class="material-symbols-outlined text-secondary/40 group-hover:text-secondary transition-colors text-3xl">directions_run</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[80%]">The ultimate test of endurance. 230 Flags back-to-back.</p>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex gap-md">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase">Record</span>
+<span class="text-label-bold text-primary">08:42:15</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase">XP</span>
+<span class="text-label-bold text-tertiary">3.5X</span>
+</div>
+</div>
+<button class="racing-gradient px-lg py-sm rounded-md text-on-primary-container font-label-bold text-label-bold scale-100 group-hover:brightness-110 transition-all">START</button>
+</div>
+</div>
+</div>
+<!-- Sudden Death Distinct Section -->
+<!-- Footer Featured Bar -->
+</main>
+<!-- Bottom Navigation Shell -->
+<script>
+        // Micro-interaction for mode cards
+        const cards = document.querySelectorAll('.card-glow');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simple scale effect on button click
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.style.transform = 'scale(0.95)');
+            btn.addEventListener('mouseup', () => btn.style.transform = 'scale(1)');
+            btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+        });
+    </script>
+</body></html>
