@@ -2,6 +2,12 @@
 
 A fast-paced flag identification game built as a **Devvit Web** custom post (React + Vite + Hono).
 
+**Repo:** https://github.com/vladifel/flag-blitz  
+**App:** https://developers.reddit.com/apps/flag-blitz  
+**Playtest:** `r/flag_blitz_dev`
+
+Race through world flags — Quick, Pro, Marathon & Sudden Death modes with global leaderboards.
+
 ## Stack
 
 - **Client:** React 19, Tailwind CSS 4, Vite — rendered inline in Reddit (`game.html`)
