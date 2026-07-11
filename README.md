@@ -1,34 +1,40 @@
-# Flag Blitz — Reddit Devvit Flag Guessing Game
+# Flag Blitz
 
-A fast-paced flag identification game built as a **Devvit Web** custom post (React + Vite + Hono).
+![Flag Blitz landing screen with START PLAYING button](https://raw.githubusercontent.com/vladifel/flag-blitz/main/docs/game-screenshot.png)
+
+**Flag Blitz** is a fast-paced flag identification game built for Reddit with [Devvit](https://developers.reddit.com/). Players race through world flags inside a subreddit post — no external site or download required.
 
 **Repo:** https://github.com/vladifel/flag-blitz  
 **App:** https://developers.reddit.com/apps/flag-blitz  
 **Playtest:** `r/flag_blitz_dev`
 
-Race through world flags — Quick, Pro, Marathon & Sudden Death modes with global leaderboards.
+## What this app does
 
-## Stack
+Flag Blitz adds an interactive game post to a subreddit. Each post embeds the full game inline. Players can:
 
-- **Client:** React 19, Tailwind CSS 4, Vite — rendered inline in Reddit (`game.html`)
-- **Server:** Hono on `@devvit/web/server` — scores, leaderboards, flag proxy
-- **Data:** 230 countries in `src/shared/countries.ts`; flags bundled under `public/flags/`
-- **Leaderboards:** Redis sorted sets (`leaderboard:25`, `leaderboard:50`, …)
+- **Quick / Standard / Pro / Marathon** — timed flag quizzes of increasing length
+- **Sudden Death** — one wrong answer ends the run
+- **Leaderboards** — compete on global rankings per mode
 
-Score formula: `(correctAnswers × 1,000,000) − timeInSeconds`
+Scores are stored per Reddit user via Devvit Redis.
 
-## Screens
+## How to start playing (for reviewers)
 
-| Screen | Route in app |
-|--------|----------------|
-| Landing | `landing` |
-| Mode select | `menu` |
-| Gameplay | `playing` |
-| Match complete | `results` |
-| Leaderboard | `leaderboard` |
-| Settings / prefs | `settings` |
+1. **Install** the app on a test subreddit (or open an existing Flag Blitz post).
+2. **Open a Flag Blitz post** in the feed or post detail page.
+3. The **landing screen loads inline** — tap **START PLAYING**.
+4. Pick a mode, then identify each flag from the multiple-choice options.
+5. Optional: open **leaderboard** or **settings** from the top bar.
 
-Shared chrome (`LandingChrome`): motion-blur flag background + top bar (logo, leaderboard, settings, avatar).
+### For moderators setting up the app
+
+1. Install **Flag Blitz** on your subreddit.
+2. Use the subreddit menu: **Create Flag Blitz Post** to publish a game post.
+3. After each app upload, create a **new** post so players get the latest bundle.
+
+### Playtest link
+
+`https://www.reddit.com/r/flag_blitz_dev/?playtest=flag-blitz`
 
 ## Game Modes
 
@@ -37,6 +43,15 @@ Shared chrome (`LandingChrome`): motion-blur flag background + top bar (logo, le
 - **Pro** — 100 flags
 - **Marathon** — 230 flags
 - **Sudden Death** — one wrong answer ends the run
+
+Score formula: `(correctAnswers × 1,000,000) − timeInSeconds`
+
+## Stack
+
+- **Client:** React 19, Tailwind CSS 4, Vite — rendered inline in Reddit (`game.html`)
+- **Server:** Hono on `@devvit/web/server` — scores, leaderboards, flag proxy
+- **Data:** 230 countries in `src/shared/countries.ts`; flags bundled under `public/flags/`
+- **Leaderboards:** Redis sorted sets (`leaderboard:25`, `leaderboard:50`, …)
 
 ## Development
 
@@ -48,25 +63,6 @@ npm run upload           # build + upload to Devvit
 npm run dev              # build then playtest
 ```
 
-Playtest subreddit: `r/flag_blitz_dev`  
-Moderators: subreddit menu → **Create Flag Blitz Post** (always create a **new** post after uploads — old posts pin old bundles).
-
-## Stitch Design Assets
-
-Project: **Reddit Flag Racer** (`9644214360471486894`)
-
-Reference HTML/screenshots live under `stitch-assets/`. Key screens used in the app:
-
-| Screen | Notes |
-|--------|--------|
-| Landing + Shader | Hero / energy field inspiration |
-| Main Menu | Mode cards |
-| Active Gameplay | HUD + options |
-| Match Complete (Standardized) | Results |
-| Leaderboard (Standardized) | Ranks table |
-
-Design system notes: `stitch-assets/design-system.md` (if present).
-
 ## Project layout
 
 ```
@@ -74,4 +70,14 @@ src/client/     React UI (screens, chrome, icons, assets)
 src/server/     Hono API + menu post creation
 src/shared/     Game logic, countries, leaderboard helpers
 public/flags/   Bundled country flag PNGs
+docs/           Screenshot, privacy policy, terms
 ```
+
+## Privacy & Terms
+
+- [Privacy Policy](https://vladifel.github.io/flag-blitz/privacy-policy.html)
+- [Terms and Conditions](https://vladifel.github.io/flag-blitz/terms-and-conditions.html)
+
+## License
+
+BSD-3-Clause
