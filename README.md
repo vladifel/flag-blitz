@@ -1,6 +1,10 @@
 # Flag Blitz
 
-![Flag Blitz landing screen with START PLAYING button](https://raw.githubusercontent.com/vladifel/flag-blitz/main/docs/game-screenshot.png)
+<p align="center">
+  <img src="docs/app-icon.png" alt="Flag Blitz app icon" width="128" height="128" />
+</p>
+
+![Flag Blitz landing screen with START PLAYING button](docs/game-screenshot.png)
 
 **Flag Blitz** is a fast-paced flag identification game built for Reddit with [Devvit](https://developers.reddit.com/). Players race through world flags inside a subreddit post — no external site or download required.
 

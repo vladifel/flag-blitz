@@ -41,6 +41,9 @@
       }
     ]
   },
+  "marketingAssets": {
+    "icon": "assets/icon.png"
+  },
   "scripts": {
     "dev": "vite build --watch",
     "build": "node scripts/download-flags.mjs && node scripts/verify-flags.mjs && vite build"
